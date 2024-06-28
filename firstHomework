@@ -1,0 +1,43 @@
+package org.example;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        /*Как се генерират числа в Java?  - s Math
+        1.1. Генерирай числата от 0 до 9 на случаен принцип - с формула
+
+        Как се задава background?
+        2.1. Генерирай "Зелен" или "Червен" фон
+        2.2. Ако фона е зелен добави числото към предишното
+        2.3. Ако фона е червен извади числото */
+
+
+        Scanner scanner = new Scanner(System.in);
+        int totalSum = 0;
+        String continueExecution;
+
+        do {
+            int randomNumber = (int) (Math.random() * 10);
+            System.out.println("Random number: " + randomNumber);
+
+
+            Random rand = new Random();
+            boolean isGreenBackground = rand.nextBoolean();
+            boolean isRedBackground = !isGreenBackground;
+
+            if (isRedBackground) {
+                System.out.println("Background is Red");
+                totalSum = totalSum + randomNumber;
+            } else {
+                System.out.println("Background is Green");
+                totalSum = totalSum - randomNumber;
+            }
+            System.out.println("Total Sum is " + totalSum);
+            System.out.print("Would you like to continue? (yes/no): ");
+            continueExecution = scanner.next();
+
+        } while (continueExecution.equalsIgnoreCase("yes"));
+    }
+}
